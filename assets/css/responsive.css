@@ -1,0 +1,639 @@
+/* ==================================================
+   1200px
+================================================== */
+
+@media (max-width:1200px){
+
+    section{
+        padding:100px 6%;
+    }
+
+    #about{
+        gap:50px;
+    }
+
+    .team-grid{
+        gap:30px;
+    }
+
+    .gallery-grid{
+        column-count:3;
+    }
+
+    .contact-wrapper{
+        grid-template-columns:1fr;
+    }
+
+    .contact-map{
+        min-height:450px;
+    }
+
+    .footer-container{
+        grid-template-columns:repeat(2,1fr);
+        gap:50px;
+    }
+
+}
+
+/* ==================================================
+   992px
+================================================== */
+
+@media (max-width:992px){
+
+    .hero-logo{
+        width:420px;
+    }
+
+    .hero-content h1{
+        font-size:3rem;
+    }
+
+    #about{
+        grid-template-columns:1fr;
+    }
+
+    .about-image{
+        order:-1;
+    }
+
+    .team-grid{
+        grid-template-columns:1fr;
+    }
+
+    .gallery-grid{
+        column-count:2;
+    }
+
+}
+
+/* ==================================================
+   768px
+================================================== */
+
+@media (max-width:768px){
+
+    /* HERO */
+
+    .hero-logo{
+        width:280px;
+    }
+
+    .hero-category{
+        letter-spacing:3px;
+        font-size:.8rem;
+    }
+
+    .hero-content h1{
+        font-size:2.3rem;
+    }
+
+    .hero-description{
+        font-size:1rem;
+    }
+
+    .hero-buttons{
+        flex-direction:column;
+        align-items:center;
+    }
+
+    .btn{
+        width:100%;
+        max-width:320px;
+        text-align:center;
+    }
+
+    /* SERVICES */
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    /* ABOUT */
+
+#about{
+
+    gap:50px;
+
+    text-align:center;
+
+}
+
+.about-image{
+
+    max-width:500px;
+
+    margin:0 auto;
+
+}
+
+.about-content h2{
+
+    font-size:2.2rem;
+
+}
+
+.about-content p{
+
+    max-width:100%;
+
+    margin-bottom:30px;
+
+}
+
+.about-list{
+
+    gap:16px;
+
+    margin-top:30px;
+
+}
+
+.about-list li{
+
+    text-align:left;
+
+    padding:16px;
+
+    font-size:1rem;
+
+}
+
+.about-list i{
+
+    width:42px;
+
+    height:42px;
+
+    font-size:.95rem;
+
+}
+
+    /* GALLERY */
+
+    .gallery-grid{
+        column-count:1;
+    }
+
+    /* TEAM */
+
+    .team-card img{
+        height:420px;
+    }
+
+    /* CONTACT */
+
+    .contact-wrapper{
+        width:100%;
+    }
+
+    .contact-card{
+        padding:28px;
+    }
+
+    .contact-buttons{
+        flex-direction:column;
+    }
+
+    .contact-buttons .btn{
+        width:100%;
+    }
+
+    .contact-map{
+        min-height:350px;
+    }
+
+    .contact-map iframe{
+        width:100%;
+        display:block;
+    }
+
+    /* FOOTER */
+
+    .footer-container{
+        grid-template-columns:1fr;
+        text-align:center;
+    }
+
+    .footer-about{
+        align-items:center;
+    }
+
+    .footer-about p{
+        margin:auto;
+    }
+
+    .footer-links,
+    .footer-contact,
+    .footer-social{
+        align-items:center;
+    }
+
+    .footer-links a,
+.footer-contact a,
+.footer-social a{
+
+    justify-content:center;
+
+}
+
+    .footer-bottom{
+        flex-direction:column;
+        text-align:center;
+    }
+
+    /* LIGHTBOX */
+
+    .lightbox img{
+        max-width:90%;
+        max-height:75vh;
+    }
+
+    .close-lightbox{
+        position:fixed;
+        top:15px;
+        right:20px;
+        font-size:2.5rem;
+        z-index:100001;
+    }
+
+    .lightbox-prev,
+    .lightbox-next{
+        display:none;
+    }
+
+    /* NAVBAR */
+
+    .desktop-btn{
+        display:none;
+    }
+
+    .menu-toggle{
+        display:flex;
+        z-index:1002;
+    }
+
+    .nav-links{
+
+        position:fixed;
+
+        top:0;
+        right:-100%;
+
+        width:290px;
+        max-width:85%;
+
+        height:100vh;
+
+        padding:120px 40px 40px;
+
+        background:#111;
+
+        display:flex;
+        flex-direction:column;
+        align-items:flex-start;
+
+        gap:22px;
+
+        overflow-y:auto;
+
+        transition:right .35s ease;
+
+        z-index:1001;
+
+    }
+
+    .nav-links.active{
+        right:0;
+    }
+
+    .nav-links li{
+        width:100%;
+    }
+
+    .nav-links a{
+
+        display:flex;
+        align-items:center;
+        gap:12px;
+
+        width:100%;
+
+        font-size:1.1rem;
+
+    }
+
+    .mobile-only{
+        display:block;
+    }
+
+    .mobile-divider{
+        display:block;
+    }
+
+    .mobile-cta{
+
+    margin-top:auto;
+
+    padding-top:28px;
+
+}
+
+    .mobile-btn{
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    width:100%;
+
+    padding:16px 22px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        135deg,
+        #d4af37,
+        #f3d87b
+    );
+
+    color:#000;
+
+    text-decoration:none;
+
+    font-weight:700;
+
+    letter-spacing:.5px;
+
+    transition:.35s;
+
+    box-shadow:
+        0 10px 30px rgba(212,175,55,.22);
+
+}
+
+    .mobile-btn:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 16px 36px rgba(212,175,55,.35);
+
+}
+
+.mobile-btn i{
+
+    margin-right:10px;
+
+    font-size:1rem;
+
+}
+
+.mobile-cta{
+
+    margin-top:auto;
+
+    padding-top:28px;
+
+}
+
+.mobile-cta::before{
+
+    content:"";
+
+    display:block;
+
+    width:100%;
+
+    height:1px;
+
+    margin-bottom:28px;
+
+    background:linear-gradient(
+        90deg,
+        transparent,
+        rgba(212,175,55,.3),
+        transparent
+    );
+
+}
+
+}
+
+
+
+/* ==================================================
+   576px
+================================================== */
+
+@media (max-width:576px){
+
+    .hero-content h1{
+        font-size:2rem;
+    }
+
+    .hero-description{
+        font-size:.95rem;
+    }
+
+    .section-title h2{
+        font-size:2rem;
+    }
+
+}
+
+@media (max-width:768px){
+
+    .scroll-indicator{
+
+        display:none;
+
+    }
+
+}
+
+/* ==================================================
+   480px
+================================================== */
+
+@media (max-width:480px){
+
+    /* HERO */
+
+    .hero-logo{
+        width:220px;
+        margin-top:35px;
+        margin-bottom:40px;
+    }
+
+    .hero-content h1{
+        font-size:2rem;
+        line-height:1.2;
+    }
+
+    .hero-description{
+        font-size:.95rem;
+        line-height:1.7;
+    }
+
+    /* SECTION */
+
+    section{
+        padding:90px 6%;
+    }
+
+    .section-title h2{
+        font-size:2rem;
+    }
+
+    /* ABOUT */
+
+    .about-content h2{
+        font-size:2rem;
+    }
+
+    .about-list li{
+        font-size:.95rem;
+    }
+
+    .about-list i{
+        width:40px;
+        height:40px;
+    }
+
+    /* TEAM */
+
+    .team-card img{
+        height:340px;
+    }
+
+    .team-content{
+        padding:25px;
+    }
+
+    .team-content h3{
+        font-size:1.7rem;
+    }
+
+    /* CONTACT */
+
+    .contact-card{
+        padding:22px;
+    }
+
+    .contact-item{
+        gap:14px;
+    }
+
+    .contact-item i{
+        width:46px;
+        height:46px;
+    }
+
+    /* FOOTER */
+
+    .footer-container{
+        padding:70px 0 40px;
+    }
+
+}
+
+
+
+@media(max-width:900px){
+
+    .page-hero{
+
+        min-height:50vh;
+
+    }
+
+    .page-hero-content h1{
+
+        font-size:2.6rem;
+
+    }
+
+    .page-hero-content p{
+
+        font-size:1rem;
+
+        line-height:1.8;
+
+    }
+
+    .artist-story{
+
+        grid-template-columns:1fr;
+
+        gap:45px;
+
+        text-align:center;
+
+    }
+
+    .artist-photo{
+
+        max-width:450px;
+
+        margin:auto;
+
+    }
+
+    .artist-meta{
+
+        justify-content:center;
+
+    }
+
+    .timeline::before{
+
+        left:30px;
+
+    }
+
+    .timeline-item{
+
+        gap:20px;
+
+    }
+
+    .timeline-year{
+
+        width:60px;
+
+        height:60px;
+
+        font-size:.9rem;
+
+    }
+
+    .timeline-content{
+
+        padding:22px;
+
+    }
+
+}
+
+/* Gallery page */
+
+@media (max-width:991px){
+
+    .gallery-page .gallery-grid{
+
+        column-count:2;
+
+    }
+
+}
+
+@media (max-width:600px){
+
+    .gallery-page .gallery-grid{
+
+        column-count:1;
+
+    }
+
+}

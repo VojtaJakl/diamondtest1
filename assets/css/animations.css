@@ -1,0 +1,342 @@
+/* ==================================================
+   Scroll Indicator
+================================================== */
+
+.scroll-indicator{
+
+    animation:scrollBounce 2s infinite;
+
+}
+
+@keyframes scrollBounce{
+
+    0%,20%,50%,80%,100%{
+
+        transform:translateY(0);
+
+    }
+
+    40%{
+
+        transform:translateY(8px);
+
+    }
+
+    60%{
+
+        transform:translateY(4px);
+
+    }
+
+}
+
+
+/*====================================
+    SCROLL REVEAL
+====================================*/
+
+.reveal{
+
+    opacity:0;
+
+    transform:translateY(60px);
+
+    transition:
+        opacity .8s cubic-bezier(.22,.61,.36,1),
+        transform .8s cubic-bezier(.22,.61,.36,1);
+
+    will-change:opacity,transform;
+
+}
+
+.reveal.show{
+
+    opacity:1;
+
+    transform:translateY(0);
+
+}
+
+/* zleva */
+
+.reveal-left{
+
+    opacity:0;
+
+    transform:translateX(-80px);
+
+    transition:
+        opacity .9s cubic-bezier(.22,.61,.36,1),
+        transform .9s cubic-bezier(.22,.61,.36,1);
+
+}
+
+.reveal-left.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+/* zprava */
+
+.reveal-right{
+
+    opacity:0;
+
+    transform:translateX(80px);
+
+    transition:
+        opacity .9s cubic-bezier(.22,.61,.36,1),
+        transform .9s cubic-bezier(.22,.61,.36,1);
+
+}
+
+.reveal-right.show{
+
+    opacity:1;
+
+    transform:translateX(0);
+
+}
+
+/* zoom */
+
+.reveal-scale{
+
+    opacity:0;
+
+    transform:scale(.92);
+
+    transition:
+        opacity .8s ease,
+        transform .8s ease;
+
+}
+
+.reveal-scale.show{
+
+    opacity:1;
+
+    transform:scale(1);
+
+}
+
+/*====================================
+    NAVBAR SCROLL
+====================================*/
+
+.navbar{
+
+    transition:
+        height .35s ease,
+        padding .35s ease,
+        background .35s ease,
+        backdrop-filter .35s ease;
+
+}
+
+.navbar.scrolled{
+
+    height:70px;
+
+    background:rgba(8,8,8,.94);
+
+    backdrop-filter:blur(22px);
+
+}
+
+.navbar .logo img{
+
+    transition:
+        width .35s ease,
+        transform .35s ease;
+
+}
+
+.navbar.scrolled .logo img{
+
+    width:54px;
+
+}
+
+.navbar .desktop-btn{
+
+    transition:
+        transform .35s ease,
+        padding .35s ease;
+
+}
+
+.navbar.scrolled .desktop-btn{
+
+    padding:11px 24px;
+
+}
+
+.nav-links a.active{
+
+    color:var(--gold);
+
+}
+
+.nav-links a.active::after{
+
+    width:100%;
+
+}
+
+/*====================================
+    HERO FLOAT
+====================================*/
+
+@keyframes heroFloat{
+
+    0%{
+
+        transform:translateY(0px);
+
+    }
+
+    50%{
+
+        transform:translateY(-10px);
+
+    }
+
+    100%{
+
+        transform:translateY(0px);
+
+    }
+
+}
+
+.hero-logo{
+
+    animation:heroFloat 6s ease-in-out infinite;
+
+}
+
+@keyframes patternMove{
+
+    from{
+
+        background-position:center top;
+
+    }
+
+    to{
+
+        background-position:center 80px;
+
+    }
+
+}
+
+.hero-overlay{
+
+    animation:patternMove 35s linear infinite alternate;
+
+}
+
+@keyframes heroFade{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+.hero-content{
+
+    animation:heroFade 1s ease;
+
+}
+
+.hero-content,
+.hero-overlay{
+
+    will-change:transform;
+
+}
+
+/*====================================
+    SERVICE CARD SHIMMER
+====================================*/
+
+.service-card::after{
+
+    content:"";
+
+    position:absolute;
+
+    top:-120%;
+
+    left:-180%;
+
+    width:70%;
+
+    height:300%;
+
+    background:linear-gradient(
+
+        115deg,
+
+        transparent 0%,
+
+        rgba(255,255,255,.03) 35%,
+
+        rgba(212,175,55,.18) 50%,
+
+        rgba(255,255,255,.03) 65%,
+
+        transparent 100%
+
+    );
+
+    transform:rotate(25deg);
+
+    transition:left .9s ease;
+
+    pointer-events:none;
+
+}
+
+.service-card:hover::after{
+
+    left:170%;
+
+}
+
+/*====================================
+    MAGNET
+====================================*/
+
+.btn{
+
+    transition:
+
+        transform .25s ease,
+
+        box-shadow .3s ease,
+
+        background .3s ease,
+
+        color .3s ease;
+
+}
+
