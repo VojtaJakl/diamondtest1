@@ -1211,7 +1211,7 @@ Tým
 
 .team-card:hover img{
 
-    transform:scale(1.05);
+    transform:scale(.93);
 }
 
 .team-content{
@@ -3212,3 +3212,32 @@ TIMELINE
 
 }
 
+/* ==================================================
+   SERVICE HERO
+================================================== */
+
+.service-hero{
+
+    min-height:60vh;
+
+}
+
+.service-hero .page-hero-content{
+
+    max-width:760px;
+
+}
+
+.service-hero h1{
+
+    font-size:4rem;
+
+}
+
+.service-hero p{
+
+    max-width:650px;
+
+    margin:25px auto 0;
+
+}

@@ -39,11 +39,11 @@
 
     opacity:0;
 
-    transform:translateY(60px);
+    transform:translateY(35px);
 
     transition:
-        opacity .8s cubic-bezier(.22,.61,.36,1),
-        transform .8s cubic-bezier(.22,.61,.36,1);
+        opacity .55s cubic-bezier(.22,.61,.36,1),
+        transform .55s cubic-bezier(.22,.61,.36,1);
 
     will-change:opacity,transform;
 
@@ -63,11 +63,11 @@
 
     opacity:0;
 
-    transform:translateX(-80px);
+    transform:translateX(-40px);
 
     transition:
-        opacity .9s cubic-bezier(.22,.61,.36,1),
-        transform .9s cubic-bezier(.22,.61,.36,1);
+        opacity .55s cubic-bezier(.22,.61,.36,1),
+        transform .55s cubic-bezier(.22,.61,.36,1);
 
 }
 
@@ -85,11 +85,11 @@
 
     opacity:0;
 
-    transform:translateX(80px);
+    transform:translateX(40px);
 
     transition:
-        opacity .9s cubic-bezier(.22,.61,.36,1),
-        transform .9s cubic-bezier(.22,.61,.36,1);
+        opacity .55s cubic-bezier(.22,.61,.36,1),
+        transform .55s cubic-bezier(.22,.61,.36,1);
 
 }
 
@@ -107,11 +107,11 @@
 
     opacity:0;
 
-    transform:scale(.92);
+    transform:scale(.96);
 
     transition:
-        opacity .8s ease,
-        transform .8s ease;
+        opacity .5s ease,
+        transform .5s ease;
 
 }
 

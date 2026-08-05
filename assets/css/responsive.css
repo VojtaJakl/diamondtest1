@@ -95,6 +95,7 @@
     .hero-buttons{
         flex-direction:column;
         align-items:center;
+        
     }
 
     .btn{
@@ -502,18 +503,8 @@
     }
 
     /* TEAM */
-
-    .team-card img{
-        height:340px;
-    }
-
-    .team-content{
-        padding:25px;
-    }
-
-    .team-content h3{
-        font-size:1.7rem;
-    }
+    
+.team-card img{ height:425px; } .team-content{ padding:25px; } .team-content h3{ font-size:1.7rem; }
 
     /* CONTACT */
 
@@ -634,6 +625,132 @@
 
         column-count:1;
 
+    }
+
+}
+
+/* ==================================================
+   SERVICE PAGES
+================================================== */
+
+@media (max-width:768px){
+
+    /* HERO */
+
+    .page-hero{
+        min-height:55vh;
+        padding:120px 6% 80px;
+    }
+
+    .page-hero-content h1{
+        font-size:2.3rem;
+        line-height:1.2;
+    }
+
+    .page-hero-content p{
+        font-size:1rem;
+        line-height:1.8;
+    }
+
+    /* Breadcrumb */
+
+    .breadcrumb{
+        flex-wrap:wrap;
+        gap:10px;
+        font-size:.9rem;
+    }
+
+    /* Intro */
+
+    .artist-story{
+        grid-template-columns:1fr;
+        gap:40px;
+        text-align:center;
+    }
+
+    .artist-photo{
+        max-width:420px;
+        margin:auto;
+    }
+
+    .artist-content h2{
+        font-size:2.2rem;
+    }
+
+    .artist-meta{
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    /* Cards */
+
+    .styles-grid,
+    .aftercare-grid,
+    .warning-grid{
+        grid-template-columns:1fr;
+    }
+
+    .style-card,
+    .aftercare-card,
+    .warning-card{
+        padding:30px;
+    }
+
+    /* Timeline */
+
+    .timeline::before{
+        left:25px;
+    }
+
+    .timeline-item{
+        gap:18px;
+    }
+
+    .timeline-year{
+        width:55px;
+        height:55px;
+        font-size:.85rem;
+    }
+
+    .timeline-content{
+        padding:24px;
+    }
+
+}
+
+@media (max-width:480px){
+
+    .page-hero{
+        min-height:50vh;
+        padding:110px 6% 70px;
+    }
+
+    .page-hero-content h1{
+        font-size:2rem;
+    }
+
+    .page-hero-content p{
+        font-size:.95rem;
+    }
+
+    .artist-content h2{
+        font-size:1.9rem;
+    }
+
+    .artist-meta{
+        gap:10px;
+    }
+
+    .artist-meta span{
+        width:100%;
+        justify-content:center;
+    }
+
+    .style-card,
+    .timeline-content,
+    .aftercare-card,
+    .warning-card{
+        padding:24px;
     }
 
 }

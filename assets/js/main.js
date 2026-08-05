@@ -121,21 +121,23 @@ if (revealElements.length) {
 
     const revealObserver = new IntersectionObserver((entries) => {
 
-        entries.forEach(entry => {
+    entries.forEach(entry => {
 
-            if (entry.isIntersecting) {
+        if (entry.isIntersecting) {
 
-                entry.target.classList.add("show");
+            entry.target.classList.add("show");
+            revealObserver.unobserve(entry.target);
 
-                revealObserver.unobserve(entry.target);
+        }
 
-            }
-
-        });
-
-    }, {
-        threshold: .15
     });
+
+}, {
+
+    threshold:0.05,
+    rootMargin:"0px 0px -60px 0px"
+
+});
 
     revealElements.forEach(el => {
 
@@ -153,7 +155,12 @@ const hero = document.querySelector("#hero");
 const heroContent = document.querySelector(".hero-content");
 const heroOverlay = document.querySelector(".hero-overlay");
 
-if (hero && heroContent && heroOverlay) {
+if (
+    hero &&
+    heroContent &&
+    heroOverlay &&
+    window.innerWidth > 768
+) {
 
     window.addEventListener("scroll", () => {
 
