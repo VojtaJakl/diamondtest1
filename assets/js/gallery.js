@@ -396,63 +396,69 @@ restartRevealAnimation();
 
 
 /* ==================================================
-   MOBILNÍ INDIKÁTOR
+   MOBILNÍ SWIPE INDIKÁTOR
 ================================================== */
 
-const galleryGrid = document.querySelector(".gallery-grid");
-const dotsContainer = document.querySelector(".gallery-dots");
+const galleryGroupsForMobile =
+    document.querySelectorAll(".gallery-group");
 
-if (galleryGrid && dotsContainer) {
+galleryGroupsForMobile.forEach(group => {
 
-    const items = [
-        ...galleryGrid.querySelectorAll(".gallery-item")
-    ];
+    const grid = group.querySelector(".gallery-grid");
 
-    items.forEach((_, index) => {
+    const currentNumber =
+        group.querySelector(".gallery-current");
 
-        const dot = document.createElement("span");
+    const totalNumber =
+        group.querySelector(".gallery-total");
 
-        if (index === 0) {
+    if (!grid || !currentNumber || !totalNumber) return;
 
-            dot.classList.add("active");
+    const items =
+        [...grid.querySelectorAll(".gallery-item")];
 
-        }
+    if (!items.length) return;
 
-        dotsContainer.appendChild(dot);
+    totalNumber.textContent =
+        String(items.length).padStart(2, "0");
 
-    });
+    function updateMobileProgress() {
 
+        const firstItem = items[0];
 
-    const dots = dotsContainer.querySelectorAll("span");
+        if (!firstItem) return;
 
+        const gap = 16;
 
-    function updateDots() {
+        const itemWidth =
+            firstItem.offsetWidth + gap;
 
-        if (!items.length) return;
+        if (!itemWidth) return;
 
-        const cardWidth = items[0].offsetWidth + 16;
+        let index =
+            Math.round(grid.scrollLeft / itemWidth);
 
-        const index = Math.round(
-            galleryGrid.scrollLeft / cardWidth
+        index = Math.max(
+            0,
+            Math.min(index, items.length - 1)
         );
 
-
-        dots.forEach(dot => {
-
-            dot.classList.remove("active");
-
-        });
-
-
-        if (dots[index]) {
-
-            dots[index].classList.add("active");
-
-        }
+        currentNumber.textContent =
+            String(index + 1).padStart(2, "0");
 
     }
 
+    grid.addEventListener(
+        "scroll",
+        updateMobileProgress,
+        { passive: true }
+    );
 
-    galleryGrid.addEventListener("scroll", updateDots);
+    window.addEventListener(
+        "resize",
+        updateMobileProgress
+    );
 
-}
+    updateMobileProgress();
+
+});
