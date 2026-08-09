@@ -1,9 +1,9 @@
 /* ==================================================
-   GALLERY LIGHTBOX
+   GALLERY FILTER + LIGHTBOX
 ================================================== */
 
-const galleryItems = document.querySelectorAll(".gallery-item");
-const galleryImages = [...document.querySelectorAll(".gallery-item img")];
+const galleryGroups = document.querySelectorAll(".gallery-group");
+const galleryCategories = document.querySelectorAll(".gallery-category");
 
 const lightbox = document.querySelector(".lightbox");
 const lightboxImage = document.getElementById("lightbox-image");
@@ -12,83 +12,216 @@ const closeBtn = document.querySelector(".close-lightbox");
 const prevBtn = document.querySelector(".lightbox-prev");
 const nextBtn = document.querySelector(".lightbox-next");
 
+let currentGallery = [];
 let currentIndex = 0;
 
-if (
-    lightbox &&
-    lightboxImage &&
-    closeBtn &&
-    prevBtn &&
-    nextBtn &&
-    galleryItems.length
-) {
 
-    // Otevření lightboxu
-    function openLightbox(index){
+/* ==================================================
+   GALLERY FILTER
+================================================== */
 
-        currentIndex = index;
+galleryCategories.forEach(category => {
 
-        lightboxImage.src = galleryImages[currentIndex].src;
-        lightboxImage.alt = galleryImages[currentIndex].alt;
+    category.addEventListener("click", () => {
 
-        lightbox.classList.add("active");
-        document.body.style.overflow = "hidden";
+        const filter = category.dataset.filter;
+
+        /* Aktivní box */
+
+        galleryCategories.forEach(item => {
+            item.classList.remove("active");
+        });
+
+        category.classList.add("active");
+
+
+        /* Přepnutí galerie */
+
+        galleryGroups.forEach(group => {
+
+            if (group.dataset.group === filter) {
+
+                group.hidden = false;
+
+            } else {
+
+                group.hidden = true;
+
+            }
+
+        });
+
+
+        /* Připravíme aktuální galerii pro lightbox */
+
+        setTimeout(() => {
+
+            prepareCurrentGallery(filter);
+
+            restartRevealAnimation();
+
+        }, 50);
+
+    });
+
+});
+
+
+/* ==================================================
+   AKTUÁLNÍ GALERIE
+================================================== */
+
+function prepareCurrentGallery(filter) {
+
+    const activeGroup = document.querySelector(
+        `.gallery-group[data-group="${filter}"]`
+    );
+
+    if (!activeGroup) {
+
+        currentGallery = [];
+
+        return;
 
     }
 
-    // Zavření
-    function closeLightbox(){
+    currentGallery = [
+        ...activeGroup.querySelectorAll(".gallery-item img")
+    ];
 
-        lightbox.classList.remove("active");
-        document.body.style.overflow = "";
+}
+
+
+/* ==================================================
+   START
+================================================== */
+
+prepareCurrentGallery("all");
+
+
+/* ==================================================
+   LIGHTBOX
+================================================== */
+
+function openLightbox(index) {
+
+    if (!currentGallery.length) return;
+
+    currentIndex = index;
+
+    lightboxImage.src = currentGallery[currentIndex].src;
+    lightboxImage.alt = currentGallery[currentIndex].alt;
+
+    lightbox.classList.add("active");
+
+    document.body.style.overflow = "hidden";
+
+}
+
+
+function closeLightbox() {
+
+    lightbox.classList.remove("active");
+
+    document.body.style.overflow = "";
+
+}
+
+
+function showImage(index) {
+
+    if (!currentGallery.length) return;
+
+    currentIndex = index;
+
+    lightboxImage.src = currentGallery[currentIndex].src;
+    lightboxImage.alt = currentGallery[currentIndex].alt;
+
+}
+
+
+/* ==================================================
+   NEXT
+================================================== */
+
+function nextImage() {
+
+    if (!currentGallery.length) return;
+
+    currentIndex++;
+
+    if (currentIndex >= currentGallery.length) {
+
+        currentIndex = 0;
 
     }
 
-    // Další obrázek
-    function nextImage(){
+    showImage(currentIndex);
 
-        currentIndex++;
+}
 
-        if(currentIndex >= galleryImages.length){
 
-            currentIndex = 0;
+/* ==================================================
+   PREVIOUS
+================================================== */
 
-        }
+function prevImage() {
 
-        lightboxImage.src = galleryImages[currentIndex].src;
-        lightboxImage.alt = galleryImages[currentIndex].alt;
+    if (!currentGallery.length) return;
 
-    }
+    currentIndex--;
 
-    // Předchozí obrázek
-    function prevImage(){
+    if (currentIndex < 0) {
 
-        currentIndex--;
-
-        if(currentIndex < 0){
-
-            currentIndex = galleryImages.length - 1;
-
-        }
-
-        lightboxImage.src = galleryImages[currentIndex].src;
-        lightboxImage.alt = galleryImages[currentIndex].alt;
+        currentIndex = currentGallery.length - 1;
 
     }
 
-    // Klik na galerii
-    galleryItems.forEach((item,index)=>{
+    showImage(currentIndex);
 
-        item.addEventListener("click",()=>{
+}
 
-            openLightbox(index);
+
+/* ==================================================
+   KLIKNUTÍ NA OBRÁZEK
+================================================== */
+
+galleryGroups.forEach(group => {
+
+    const items = group.querySelectorAll(".gallery-item");
+
+    items.forEach(item => {
+
+        item.addEventListener("click", () => {
+
+            /* Najdeme galerii, ve které se kliklo */
+
+            const images = [
+                ...group.querySelectorAll(".gallery-item img")
+            ];
+
+            currentGallery = images;
+
+            const clickedImage = item.querySelector("img");
+
+            currentIndex = images.indexOf(clickedImage);
+
+            openLightbox(currentIndex);
 
         });
 
     });
 
-    // Zavření
-    closeBtn.addEventListener("click",(e)=>{
+});
+
+
+/* ==================================================
+   CLOSE
+================================================== */
+
+if (closeBtn) {
+
+    closeBtn.addEventListener("click", e => {
 
         e.stopPropagation();
 
@@ -96,10 +229,18 @@ if (
 
     });
 
-    // Klik mimo obrázek
-    lightbox.addEventListener("click",(e)=>{
+}
 
-        if(e.target===lightbox){
+
+/* ==================================================
+   CLICK OUTSIDE
+================================================== */
+
+if (lightbox) {
+
+    lightbox.addEventListener("click", e => {
+
+        if (e.target === lightbox) {
 
             closeLightbox();
 
@@ -107,8 +248,16 @@ if (
 
     });
 
-    // Šipky
-    nextBtn.addEventListener("click",(e)=>{
+}
+
+
+/* ==================================================
+   NEXT / PREVIOUS BUTTONS
+================================================== */
+
+if (nextBtn) {
+
+    nextBtn.addEventListener("click", e => {
 
         e.stopPropagation();
 
@@ -116,7 +265,12 @@ if (
 
     });
 
-    prevBtn.addEventListener("click",(e)=>{
+}
+
+
+if (prevBtn) {
+
+    prevBtn.addEventListener("click", e => {
 
         e.stopPropagation();
 
@@ -124,82 +278,135 @@ if (
 
     });
 
-    // Klávesnice
-    document.addEventListener("keydown",(e)=>{
+}
 
-        if(!lightbox.classList.contains("active")) return;
 
-        if(e.key==="Escape"){
+/* ==================================================
+   KEYBOARD
+================================================== */
 
-            closeLightbox();
+document.addEventListener("keydown", e => {
 
-        }
+    if (!lightbox || !lightbox.classList.contains("active")) return;
 
-        if(e.key==="ArrowRight"){
 
-            nextImage();
+    if (e.key === "Escape") {
 
-        }
+        closeLightbox();
 
-        if(e.key==="ArrowLeft"){
+    }
 
-            prevImage();
 
-        }
+    if (e.key === "ArrowRight") {
 
-    });
+        nextImage();
 
-    /* ===========================
-       Swipe v lightboxu
-    =========================== */
+    }
 
-    let touchStartX = 0;
-    let touchEndX = 0;
 
-    lightbox.addEventListener("touchstart",(e)=>{
+    if (e.key === "ArrowLeft") {
+
+        prevImage();
+
+    }
+
+});
+
+
+/* ==================================================
+   SWIPE
+================================================== */
+
+let touchStartX = 0;
+let touchEndX = 0;
+
+
+if (lightbox) {
+
+    lightbox.addEventListener("touchstart", e => {
 
         touchStartX = e.changedTouches[0].screenX;
 
     });
 
-    lightbox.addEventListener("touchend",(e)=>{
+
+    lightbox.addEventListener("touchend", e => {
 
         touchEndX = e.changedTouches[0].screenX;
 
-        handleSwipe();
+        const distance = touchEndX - touchStartX;
 
-    });
+        if (Math.abs(distance) < 50) return;
 
-    function handleSwipe(){
 
-        const swipeDistance = touchEndX - touchStartX;
-
-        if(Math.abs(swipeDistance) < 50) return;
-
-        if(swipeDistance < 0){
+        if (distance < 0) {
 
             nextImage();
 
-        }else{
+        } else {
 
             prevImage();
 
         }
 
-    }
+    });
 
 }
 
-/* ===========================
-   Mobilní indikátor galerie
-=========================== */
+
+/* ==================================================
+   RESTART REVEAL ANIMATION
+================================================== */
+
+function restartRevealAnimation() {
+
+    const visibleGroup = [...galleryGroups]
+        .find(group => !group.hidden);
+
+    if (!visibleGroup) return;
+
+
+    const items = visibleGroup.querySelectorAll(".gallery-item");
+
+
+    items.forEach((item, index) => {
+
+        item.classList.remove("reveal-scale");
+
+        item.style.transitionDelay = "0ms";
+
+        /* restart CSS animation */
+
+        void item.offsetWidth;
+
+        item.classList.add("reveal-scale");
+
+        item.style.transitionDelay = `${Math.min(index, 12) * 60}ms`;
+
+    });
+
+}
+
+
+/* ==================================================
+   GALLERY STAGGER
+================================================== */
+
+restartRevealAnimation();
+
+
+/* ==================================================
+   MOBILNÍ INDIKÁTOR
+================================================== */
 
 const galleryGrid = document.querySelector(".gallery-grid");
 const dotsContainer = document.querySelector(".gallery-dots");
 
 if (galleryGrid && dotsContainer) {
 
-    const items = [...galleryGrid.querySelectorAll(".gallery-item")];
+    const items = [
+        ...galleryGrid.querySelectorAll(".gallery-item")
+    ];
 
     items.forEach((_, index) => {
 
@@ -215,14 +422,27 @@ if (galleryGrid && dotsContainer) {
 
     });
 
+
     const dots = dotsContainer.querySelectorAll("span");
+
 
     function updateDots() {
 
-        const cardWidth = items[0].offsetWidth + 16;
-        const index = Math.round(galleryGrid.scrollLeft / cardWidth);
+        if (!items.length) return;
 
-        dots.forEach(dot => dot.classList.remove("active"));
+        const cardWidth = items[0].offsetWidth + 16;
+
+        const index = Math.round(
+            galleryGrid.scrollLeft / cardWidth
+        );
+
+
+        dots.forEach(dot => {
+
+            dot.classList.remove("active");
+
+        });
+
 
         if (dots[index]) {
 
@@ -232,18 +452,7 @@ if (galleryGrid && dotsContainer) {
 
     }
 
+
     galleryGrid.addEventListener("scroll", updateDots);
 
 }
-
-/* ==================================================
-   GALLERY STAGGER
-================================================== */
-
-galleryItems.forEach((item, index) => {
-
-    item.classList.add("reveal-scale");
-
-    item.style.transitionDelay = `${index * 80}ms`;
-
-});
