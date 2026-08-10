@@ -1,6 +1,4 @@
-/* ==================================================
-   GALLERY FILTER + LIGHTBOX
-================================================== */
+
 
 const galleryGroups = document.querySelectorAll(".gallery-group");
 const galleryCategories = document.querySelectorAll(".gallery-category");
@@ -16,9 +14,7 @@ let currentGallery = [];
 let currentIndex = 0;
 
 
-/* ==================================================
-   GALLERY FILTER
-================================================== */
+
 
 galleryCategories.forEach(category => {
 
@@ -26,7 +22,7 @@ galleryCategories.forEach(category => {
 
         const filter = category.dataset.filter;
 
-        /* Aktivní box */
+        
 
         galleryCategories.forEach(item => {
             item.classList.remove("active");
@@ -35,7 +31,7 @@ galleryCategories.forEach(category => {
         category.classList.add("active");
 
 
-        /* Přepnutí galerie */
+        
 
         galleryGroups.forEach(group => {
 
@@ -52,7 +48,7 @@ galleryCategories.forEach(category => {
         });
 
 
-        /* Připravíme aktuální galerii pro lightbox */
+        
 
         setTimeout(() => {
 
@@ -67,9 +63,7 @@ galleryCategories.forEach(category => {
 });
 
 
-/* ==================================================
-   AKTUÁLNÍ GALERIE
-================================================== */
+
 
 function prepareCurrentGallery(filter) {
 
@@ -92,16 +86,12 @@ function prepareCurrentGallery(filter) {
 }
 
 
-/* ==================================================
-   START
-================================================== */
+
 
 prepareCurrentGallery("all");
 
 
-/* ==================================================
-   LIGHTBOX
-================================================== */
+
 
 function openLightbox(index) {
 
@@ -140,9 +130,7 @@ function showImage(index) {
 }
 
 
-/* ==================================================
-   NEXT
-================================================== */
+
 
 function nextImage() {
 
@@ -161,9 +149,7 @@ function nextImage() {
 }
 
 
-/* ==================================================
-   PREVIOUS
-================================================== */
+
 
 function prevImage() {
 
@@ -182,9 +168,7 @@ function prevImage() {
 }
 
 
-/* ==================================================
-   KLIKNUTÍ NA OBRÁZEK
-================================================== */
+
 
 galleryGroups.forEach(group => {
 
@@ -194,7 +178,7 @@ galleryGroups.forEach(group => {
 
         item.addEventListener("click", () => {
 
-            /* Najdeme galerii, ve které se kliklo */
+            
 
             const images = [
                 ...group.querySelectorAll(".gallery-item img")
@@ -215,9 +199,7 @@ galleryGroups.forEach(group => {
 });
 
 
-/* ==================================================
-   CLOSE
-================================================== */
+
 
 if (closeBtn) {
 
@@ -232,9 +214,7 @@ if (closeBtn) {
 }
 
 
-/* ==================================================
-   CLICK OUTSIDE
-================================================== */
+
 
 if (lightbox) {
 
@@ -251,9 +231,7 @@ if (lightbox) {
 }
 
 
-/* ==================================================
-   NEXT / PREVIOUS BUTTONS
-================================================== */
+
 
 if (nextBtn) {
 
@@ -281,9 +259,7 @@ if (prevBtn) {
 }
 
 
-/* ==================================================
-   KEYBOARD
-================================================== */
+
 
 document.addEventListener("keydown", e => {
 
@@ -313,9 +289,7 @@ document.addEventListener("keydown", e => {
 });
 
 
-/* ==================================================
-   SWIPE
-================================================== */
+
 
 let touchStartX = 0;
 let touchEndX = 0;
@@ -354,9 +328,7 @@ if (lightbox) {
 }
 
 
-/* ==================================================
-   RESTART REVEAL ANIMATION
-================================================== */
+
 
 function restartRevealAnimation() {
 
@@ -375,7 +347,7 @@ function restartRevealAnimation() {
 
         item.style.transitionDelay = "0ms";
 
-        /* restart CSS animation */
+        
 
         void item.offsetWidth;
 
@@ -388,16 +360,12 @@ function restartRevealAnimation() {
 }
 
 
-/* ==================================================
-   GALLERY STAGGER
-================================================== */
+
 
 restartRevealAnimation();
 
 
-/* ==================================================
-   MOBILNÍ SWIPE INDIKÁTOR
-================================================== */
+
 
 const galleryGroupsForMobile =
     document.querySelectorAll(".gallery-group");

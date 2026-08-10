@@ -2,9 +2,7 @@ const menuToggle = document.querySelector(".menu-toggle");
 const navLinks = document.querySelector(".nav-links");
 const overlay = document.querySelector(".menu-overlay");
 
-/* ===========================
-   MENU
-=========================== */
+
 
 if (menuToggle && navLinks && overlay) {
 
@@ -44,9 +42,7 @@ if (menuToggle && navLinks && overlay) {
 
 }
 
-/* ===========================
-   Navbar Scroll
-=========================== */
+
 
 const navbar = document.querySelector(".navbar");
 
@@ -68,9 +64,7 @@ if (navbar) {
 
 }
 
-/* ===========================
-   Aktivní navigace (jen homepage)
-=========================== */
+
 
 if(document.getElementById("hero")){
 
@@ -109,9 +103,7 @@ if(document.getElementById("hero")){
 
 }
 
-/*====================================
-    SCROLL REVEAL
-====================================*/
+
 
 const revealElements = document.querySelectorAll(
     ".reveal,.reveal-left,.reveal-right,.reveal-scale"
@@ -147,9 +139,7 @@ if (revealElements.length) {
 
 }
 
-/*====================================
-    HERO PARALLAX
-====================================*/
+
 
 const hero = document.querySelector("#hero");
 const heroContent = document.querySelector(".hero-content");
@@ -180,9 +170,7 @@ if (
 
 }
 
-/*====================================
-    MAGNET BUTTONS
-====================================*/
+
 
 document.querySelectorAll(".btn").forEach(button => {
 

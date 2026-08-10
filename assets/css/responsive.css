@@ -1,6 +1,4 @@
-/* ==================================================
-   1200px
-================================================== */
+
 
 @media (max-width:1200px){
 
@@ -35,9 +33,7 @@
 
 }
 
-/* ==================================================
-   992px
-================================================== */
+
 
 @media (max-width:992px){
 
@@ -67,13 +63,11 @@
 
 }
 
-/* ==================================================
-   768px
-================================================== */
+
 
 @media (max-width:768px){
 
-    /* HERO */
+    
 
     .hero-logo{
         width:280px;
@@ -104,13 +98,13 @@
         text-align:center;
     }
 
-    /* SERVICES */
+    
 
     .services-grid{
         grid-template-columns:1fr;
     }
 
-    /* ABOUT */
+    
 
 #about{
 
@@ -170,19 +164,19 @@
 
 }
 
-    /* GALLERY */
+    
 
     .gallery-grid{
         column-count:1;
     }
 
-    /* TEAM */
+    
 
     .team-card img{
         height:420px;
     }
 
-    /* CONTACT */
+    
 
     .contact-wrapper{
         width:100%;
@@ -209,7 +203,7 @@
         display:block;
     }
 
-    /* FOOTER */
+    
 
     .footer-container{
         grid-template-columns:1fr;
@@ -243,7 +237,7 @@
         text-align:center;
     }
 
-    /* LIGHTBOX */
+    
 
     .lightbox img{
         max-width:90%;
@@ -263,7 +257,7 @@
         display:none;
     }
 
-    /* NAVBAR */
+    
 
     .desktop-btn{
         display:none;
@@ -423,9 +417,7 @@
 
 
 
-/* ==================================================
-   576px
-================================================== */
+
 
 @media (max-width:576px){
 
@@ -453,13 +445,11 @@
 
 }
 
-/* ==================================================
-   480px
-================================================== */
+
 
 @media (max-width:480px){
 
-    /* HERO */
+    
 
     .hero-logo{
         width:220px;
@@ -477,7 +467,7 @@
         line-height:1.7;
     }
 
-    /* SECTION */
+    
 
     section{
         padding:90px 6%;
@@ -487,7 +477,7 @@
         font-size:2rem;
     }
 
-    /* ABOUT */
+    
 
     .about-content h2{
         font-size:2rem;
@@ -502,11 +492,11 @@
         height:40px;
     }
 
-    /* TEAM */
+    
     
 .team-card img{ height:425px; } .team-content{ padding:25px; } .team-content h3{ font-size:1.7rem; }
 
-    /* CONTACT */
+    
 
     .contact-card{
         padding:22px;
@@ -521,7 +511,7 @@
         height:46px;
     }
 
-    /* FOOTER */
+    
 
     .footer-container{
         padding:70px 0 40px;
@@ -607,7 +597,7 @@
 
 }
 
-/* Gallery page */
+
 
 @media (max-width:991px){
 
@@ -629,13 +619,11 @@
 
 }
 
-/* ==================================================
-   SERVICE PAGES
-================================================== */
+
 
 @media (max-width:768px){
 
-    /* HERO */
+    
 
     .page-hero{
         min-height:55vh;
@@ -652,7 +640,7 @@
         line-height:1.8;
     }
 
-    /* Breadcrumb */
+    
 
     .breadcrumb{
         flex-wrap:wrap;
@@ -660,7 +648,7 @@
         font-size:.9rem;
     }
 
-    /* Intro */
+    
 
     .artist-story{
         grid-template-columns:1fr;
@@ -682,7 +670,7 @@
         flex-wrap:wrap;
     }
 
-    /* Cards */
+    
 
     .styles-grid,
     .aftercare-grid,
@@ -696,7 +684,7 @@
         padding:30px;
     }
 
-    /* Timeline */
+    
 
     .timeline::before{
         left:25px;
